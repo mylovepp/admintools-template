@@ -13,7 +13,7 @@ export default defineConfig(() => ({
 			filename: "remoteEntry.js",
 			name: "{{app-name}}",
 			exposes: {
-				"./home": "./src/App.tsx"
+				"./{{default-route}}": "./src/App.tsx"
 			},
 			remotes: {},
 			shared: {
