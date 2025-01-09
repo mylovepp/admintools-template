@@ -1,0 +1,12 @@
+{
+  "name": "admintools-create",
+  "version": "1.0.0",
+  "main": "cli.js",
+  "dependencies": {
+    "@inquirer/prompts": "^7.2.1",
+    "inquirer": "^12.3.0"
+  },
+  "bin": {
+    "admintools-create": "./cli.js"
+  }
+}
