@@ -4,7 +4,7 @@ import { defineConfig } from "vite";
 import { dependencies } from "./package.json";
 
 export default defineConfig(() => ({
-	server: { port: 3001 },
+	server: { port: {{port}} },
 	build: {
 		target: "chrome89"
 	},
