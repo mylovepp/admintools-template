@@ -15,7 +15,7 @@ async function main() {
     // Prompt user for input: default route
     const defaultRoute = await input({ message: "Enter your default route:", default: "main" });
     // Prompt user for number: port default 3001, validate port should more than 1000
-    const port = await number({ message: "Enter your port:", default: 3001, validate: (input) => input >= 1000 ? true : "Port should more than 1000." });
+    const port = await number({ message: "Enter your port:", default: 3001, validate: (input) => input > 1000 ? true : "Port should more than 1000." });
 
     // Clone the template
     console.log("Cloning the template repository...");
@@ -35,6 +35,13 @@ async function main() {
     viteConfig = viteConfig.replace(/{{default-route}}/g, defaultRoute);
     viteConfig = viteConfig.replace(/{{port}}/g, port);
     fs.writeFileSync(viteConfigPath, viteConfig);
+
+    // remove folder .git in projectName
+    execSync(`rm -rf ${projectName}/.git`, { stdio: "inherit" });
+
+    // Install dependencies
+    console.log("Installing dependencies...");
+    execSync(`cd ${projectName} && npx pnpm install`, { stdio: "inherit" });
 
     console.log("Project setup complete!");
 }
