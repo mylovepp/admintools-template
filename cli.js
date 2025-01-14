@@ -24,6 +24,7 @@ async function main() {
     // Update files
     const packageJsonPath = path.join(projectName, "package.json");
     const viteConfigPath = path.join(projectName, "vite.config.ts");
+    const appConfigPath = path.join(projectName, "App.tsx");
 
     console.log("Updating project files...");
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
@@ -35,6 +36,10 @@ async function main() {
     viteConfig = viteConfig.replace(/{{default-route}}/g, defaultRoute);
     viteConfig = viteConfig.replace(/{{port}}/g, port);
     fs.writeFileSync(viteConfigPath, viteConfig);
+
+    let appConfig = fs.readFileSync(appConfigPath, "utf8");
+    appConfig = appConfig.replace(/{{app-name}}/g, projectName);
+    fs.writeFileSync(appConfigPath, appConfig);
 
     // remove folder .git in projectName
     execSync(`rm -rf ${projectName}/.git`, { stdio: "inherit" });
