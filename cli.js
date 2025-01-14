@@ -24,7 +24,7 @@ async function main() {
     // Update files
     const packageJsonPath = path.join(projectName, "package.json");
     const viteConfigPath = path.join(projectName, "vite.config.ts");
-    const appConfigPath = path.join(projectName, "App.tsx");
+    const appConfigPath = path.join(projectName, "src/App.tsx");
 
     console.log("Updating project files...");
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
